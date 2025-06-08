@@ -6,7 +6,7 @@ echo "🔄 Đang xóa các thư mục build cũ..."
 rm -rf dist build *.egg-info
 
 echo "🛠️  Đang build lại package..."
-pip install setuptools wheel
+python setup.py sdist bdist_wheel
 
 echo "Kiểm tra bản build..."
 twine check dist/*
