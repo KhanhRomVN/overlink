@@ -46,7 +46,7 @@ class OvercloudServer:
     
     def start(self):
         """Khởi động server và ngrok tunnel"""
-        print("🌐 Initializing Overcloud Server...")
+        print("🌐 Initializing Overlink Server...")
         
         # Load model
         self.model = load_model(self.model_path)

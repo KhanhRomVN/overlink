@@ -1,6 +1,6 @@
-# Overcloud - Cloud GPU Bridge
+# Overlink - Cloud GPU Bridge
 
-[![PyPI version](https://img.shields.io/pypi/v/overcloud.svg)](https://pypi.org/project/overcloud/)
+[![PyPI version](https://img.shields.io/pypi/v/overlink.svg)](https://pypi.org/project/overlink/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Seamlessly connect local applications to cloud GPU resources (Google Colab, Kaggle, etc.) using ngrok tunnels.
@@ -16,5 +16,5 @@ Seamlessly connect local applications to cloud GPU resources (Google Colab, Kagg
 ## Installation
 
 ```bash
-pip install overcloud
+pip install overlink
 ```
