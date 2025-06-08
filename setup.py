@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='overlink',
-    version='0.2.0',
+    version='0.3.0',
     description='Bridge between local PC and cloud GPU processing',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -10,10 +10,10 @@ setup(
     author_email='khanhromvn@gmail.com',
     url='https://github.com/KhanhRomVN/overlink',
     packages=find_packages(),
+    # CHỈ giữ những package thực sự cần thiết cho cloud bridge, loại bỏ ultralytics và các package model cụ thể
     install_requires=[
         'flask',
         'pyngrok',
-        'ultralytics',
         'opencv-python-headless',
         'numpy',
         'requests'

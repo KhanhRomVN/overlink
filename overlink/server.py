@@ -62,15 +62,28 @@ class OvercloudServer:
         
         # Setup ngrok tunnel
         ngrok.set_auth_token(self.authtoken)
-        self.ngrok_tunnel = ngrok.connect(self.port, bind_tls=True)
-        public_url = self.ngrok_tunnel.public_url
-        
-        print("\n" + "="*70)
-        print(f"🔥 Public URL: {public_url}/predict")
-        print("="*70)
-        print("\nCopy this URL for OvercloudClient")
-        
-        return public_url
+        try:
+            self.ngrok_tunnel = ngrok.connect(self.port, bind_tls=True)
+            public_url = self.ngrok_tunnel.public_url
+
+            print("\n" + "="*70)
+            print(f"🔥 Public URL: {public_url}/predict")
+            print("="*70)
+            print("\nCopy this URL for OvercloudClient")
+
+            return public_url
+        except Exception as e:
+            err_msg = str(e)
+            if ("authentication failed" in err_msg and "simultaneous ngrok agent" in err_msg) or \
+               ("ERR_NGROK_108" in err_msg):
+                print("\n🚨 [Overlink Ngrok Warning]")
+                print("⚠️ KHÔNG thể tạo tunnel do vượt quá giới hạn session Ngrok Free. Bạn chỉ được phép 1 endpoint/ngrok ở chế độ miễn phí.")
+                print("→ Xem và xoá các endpoint/ngrok cũ tại: https://dashboard.ngrok.com/endpoint")
+                print("→ Hoặc thử tắt các tiến trình ngrok cũ trên máy bằng lệnh: !pkill -f ngrok")
+                print(f"Thông tin lỗi: {err_msg}")
+            else:
+                print(f"[Overlink Ngrok Error] {err_msg}")
+            raise
     
     def keep_alive(self):
         """Giữ server hoạt động"""
